@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://localhost:44396/DrinkInventory.asmx?wsdl" docRef="https://localhost:44396/DrinkInventory.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://localhost:44396/DrinkInventory.asmx" xmlns:q1="https://localhost:44330/" binding="q1:DrinkInventorySoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://localhost:44396/DrinkInventory.asmx" xmlns:q2="https://localhost:44330/" binding="q2:DrinkInventorySoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

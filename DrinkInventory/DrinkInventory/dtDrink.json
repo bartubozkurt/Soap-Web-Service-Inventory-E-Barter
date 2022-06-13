@@ -1,0 +1,28 @@
+{
+  "Drinks_List": [
+    {
+      "DrinkName": "Su",
+      "MinDrinkPrice": 2.0,
+      "MaxDrinkPrice": 6.0,
+      "DrinkUnit": 0
+    },
+    {
+      "DrinkName": "Kola",
+      "MinDrinkPrice": 7.0,
+      "MaxDrinkPrice": 10.0,
+      "DrinkUnit": 0
+    },
+    {
+      "DrinkName": "Ayran",
+      "MinDrinkPrice": 4.0,
+      "MaxDrinkPrice": 6.0,
+      "DrinkUnit": 0
+    },
+    {
+      "DrinkName": "Cool lime",
+      "MinDrinkPrice": 20.0,
+      "MaxDrinkPrice": 30.0,
+      "DrinkUnit": 1
+    }
+  ]
+}

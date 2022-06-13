@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://localhost/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://localhost/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/">
+      <s:element name="ListAllFruits">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllFruitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllFruitsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddFruitPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minfruitPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="fruitUnit" type="tns:Unit" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxfruitPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Unit">
+        <s:restriction base="s:string">
+          <s:enumeration value="KG" />
+          <s:enumeration value="Adet" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddFruitPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddFruitPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFruitPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFruitPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFruitPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFruitPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minFruitPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxFruitPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateFruitPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateFruitPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinFruitCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fruitQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinFruitCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMinFruitCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxFruitCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fruitQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxFruitCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMaxFruitCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinFruit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinFruitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMinFruitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxFruit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fruitName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxFruitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMaxFruitResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListAllFruitsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllFruits" />
+  </wsdl:message>
+  <wsdl:message name="ListAllFruitsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllFruitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddFruitPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddFruitPrice" />
+  </wsdl:message>
+  <wsdl:message name="AddFruitPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddFruitPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFruitPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFruitPrice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFruitPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFruitPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFruitPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateFruitPrice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateFruitPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateFruitPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMinFruitCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMinFruitCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMinFruitCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMinFruitCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxFruitCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMaxFruitCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxFruitCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMaxFruitCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInventory" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinFruitSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMinFruit" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinFruitSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMinFruitResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxFruitSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxFruit" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxFruitSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxFruitResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FruitInventorySoap">
+    <wsdl:operation name="ListAllFruits">
+      <wsdl:input message="tns:ListAllFruitsSoapIn" />
+      <wsdl:output message="tns:ListAllFruitsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddFruitPrice">
+      <wsdl:input message="tns:AddFruitPriceSoapIn" />
+      <wsdl:output message="tns:AddFruitPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFruitPrice">
+      <wsdl:input message="tns:DeleteFruitPriceSoapIn" />
+      <wsdl:output message="tns:DeleteFruitPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFruitPrice">
+      <wsdl:input message="tns:UpdateFruitPriceSoapIn" />
+      <wsdl:output message="tns:UpdateFruitPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMinFruitCost">
+      <wsdl:input message="tns:CalMinFruitCostSoapIn" />
+      <wsdl:output message="tns:CalMinFruitCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxFruitCost">
+      <wsdl:input message="tns:CalMaxFruitCostSoapIn" />
+      <wsdl:output message="tns:CalMaxFruitCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <wsdl:input message="tns:CheckInventorySoapIn" />
+      <wsdl:output message="tns:CheckInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinFruit">
+      <wsdl:input message="tns:HowMuchMinFruitSoapIn" />
+      <wsdl:output message="tns:HowMuchMinFruitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxFruit">
+      <wsdl:input message="tns:HowMuchMaxFruitSoapIn" />
+      <wsdl:output message="tns:HowMuchMaxFruitSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FruitInventorySoap" type="tns:FruitInventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllFruits">
+      <soap:operation soapAction="http://localhost/ListAllFruits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFruitPrice">
+      <soap:operation soapAction="http://localhost/AddFruitPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFruitPrice">
+      <soap:operation soapAction="http://localhost/DeleteFruitPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFruitPrice">
+      <soap:operation soapAction="http://localhost/UpdateFruitPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinFruitCost">
+      <soap:operation soapAction="http://localhost/CalMinFruitCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxFruitCost">
+      <soap:operation soapAction="http://localhost/CalMaxFruitCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap:operation soapAction="http://localhost/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinFruit">
+      <soap:operation soapAction="http://localhost/HowMuchMinFruit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxFruit">
+      <soap:operation soapAction="http://localhost/HowMuchMaxFruit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FruitInventorySoap12" type="tns:FruitInventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllFruits">
+      <soap12:operation soapAction="http://localhost/ListAllFruits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddFruitPrice">
+      <soap12:operation soapAction="http://localhost/AddFruitPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFruitPrice">
+      <soap12:operation soapAction="http://localhost/DeleteFruitPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFruitPrice">
+      <soap12:operation soapAction="http://localhost/UpdateFruitPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinFruitCost">
+      <soap12:operation soapAction="http://localhost/CalMinFruitCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxFruitCost">
+      <soap12:operation soapAction="http://localhost/CalMaxFruitCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap12:operation soapAction="http://localhost/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinFruit">
+      <soap12:operation soapAction="http://localhost/HowMuchMinFruit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxFruit">
+      <soap12:operation soapAction="http://localhost/HowMuchMaxFruit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FruitInventory">
+    <wsdl:port name="FruitInventorySoap" binding="tns:FruitInventorySoap">
+      <soap:address location="http://localhost:44340/FruitInventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FruitInventorySoap12" binding="tns:FruitInventorySoap12">
+      <soap12:address location="http://localhost:44340/FruitInventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

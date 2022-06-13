@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="https://localhost:44330/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="https://localhost:44330/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://localhost:44330/">
+      <s:element name="ListAllDrinks">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllDrinksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllDrinksResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddDrinkPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minDrinkPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxDrinkPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="drinkUnit" type="tns:Unit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Unit">
+        <s:restriction base="s:string">
+          <s:enumeration value="LT" />
+          <s:enumeration value="Adet" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddDrinkPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddDrinkPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDrinkPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDrinkPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteDrinkPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDrinkPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minDrinkPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxDrinkPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateDrinkPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDrinkPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinDrinkCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="drinkQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinDrinkCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMinDrinkCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxDrinkCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="drinkQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxDrinkCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMaxDrinkCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMinInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="drinkName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMaxInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListAllDrinksSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllDrinks" />
+  </wsdl:message>
+  <wsdl:message name="ListAllDrinksSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllDrinksResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddDrinkPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddDrinkPrice" />
+  </wsdl:message>
+  <wsdl:message name="AddDrinkPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddDrinkPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDrinkPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDrinkPrice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDrinkPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDrinkPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDrinkPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateDrinkPrice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateDrinkPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateDrinkPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMinDrinkCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMinDrinkCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMinDrinkCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMinDrinkCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxDrinkCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMaxDrinkCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxDrinkCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMaxDrinkCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInventory" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DrinkInventorySoap">
+    <wsdl:operation name="ListAllDrinks">
+      <wsdl:input message="tns:ListAllDrinksSoapIn" />
+      <wsdl:output message="tns:ListAllDrinksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDrinkPrice">
+      <wsdl:input message="tns:AddDrinkPriceSoapIn" />
+      <wsdl:output message="tns:AddDrinkPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrinkPrice">
+      <wsdl:input message="tns:DeleteDrinkPriceSoapIn" />
+      <wsdl:output message="tns:DeleteDrinkPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDrinkPrice">
+      <wsdl:input message="tns:UpdateDrinkPriceSoapIn" />
+      <wsdl:output message="tns:UpdateDrinkPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMinDrinkCost">
+      <wsdl:input message="tns:CalMinDrinkCostSoapIn" />
+      <wsdl:output message="tns:CalMinDrinkCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxDrinkCost">
+      <wsdl:input message="tns:CalMaxDrinkCostSoapIn" />
+      <wsdl:output message="tns:CalMaxDrinkCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <wsdl:input message="tns:CheckInventorySoapIn" />
+      <wsdl:output message="tns:CheckInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <wsdl:input message="tns:HowMuchMinInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMinInstrumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <wsdl:input message="tns:HowMuchMaxInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMaxInstrumentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DrinkInventorySoap" type="tns:DrinkInventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllDrinks">
+      <soap:operation soapAction="https://localhost:44330/ListAllDrinks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDrinkPrice">
+      <soap:operation soapAction="https://localhost:44330/AddDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrinkPrice">
+      <soap:operation soapAction="https://localhost:44330/DeleteDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDrinkPrice">
+      <soap:operation soapAction="https://localhost:44330/UpdateDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinDrinkCost">
+      <soap:operation soapAction="https://localhost:44330/CalMinDrinkCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxDrinkCost">
+      <soap:operation soapAction="https://localhost:44330/CalMaxDrinkCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap:operation soapAction="https://localhost:44330/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap:operation soapAction="https://localhost:44330/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap:operation soapAction="https://localhost:44330/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DrinkInventorySoap12" type="tns:DrinkInventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllDrinks">
+      <soap12:operation soapAction="https://localhost:44330/ListAllDrinks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDrinkPrice">
+      <soap12:operation soapAction="https://localhost:44330/AddDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDrinkPrice">
+      <soap12:operation soapAction="https://localhost:44330/DeleteDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDrinkPrice">
+      <soap12:operation soapAction="https://localhost:44330/UpdateDrinkPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinDrinkCost">
+      <soap12:operation soapAction="https://localhost:44330/CalMinDrinkCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxDrinkCost">
+      <soap12:operation soapAction="https://localhost:44330/CalMaxDrinkCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap12:operation soapAction="https://localhost:44330/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap12:operation soapAction="https://localhost:44330/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap12:operation soapAction="https://localhost:44330/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DrinkInventory">
+    <wsdl:port name="DrinkInventorySoap" binding="tns:DrinkInventorySoap">
+      <soap:address location="https://localhost:44396/DrinkInventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DrinkInventorySoap12" binding="tns:DrinkInventorySoap12">
+      <soap12:address location="https://localhost:44396/DrinkInventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

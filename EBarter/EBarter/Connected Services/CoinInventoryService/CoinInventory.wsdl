@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListAllCoins">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllCoinsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllCoinsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCoinsPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddCoinsPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddCoinsPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCoinsPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCoinsPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCoinsPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCoinsPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="coinMinPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="coinMaxPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCoinsPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCoinsPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinCoinsCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="coinQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinCoinsCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMinCoinsCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxCoinsCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="coinQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxCoinsCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMaxCoinsCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinCoins">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinCoinsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMinCoinsResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxCoins">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="coinName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxCoinsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMaxCoinsResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListAllCoinsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllCoins" />
+  </wsdl:message>
+  <wsdl:message name="ListAllCoinsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllCoinsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddCoinsPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddCoinsPrice" />
+  </wsdl:message>
+  <wsdl:message name="AddCoinsPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddCoinsPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCoinsPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCoinsPrice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCoinsPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCoinsPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCoinsPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCoinsPrice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCoinsPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCoinsPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMinCoinsCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMinCoinsCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMinCoinsCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMinCoinsCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxCoinsCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMaxCoinsCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxCoinsCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMaxCoinsCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInventory" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinCoinsSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMinCoins" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinCoinsSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMinCoinsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxCoinsSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxCoins" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxCoinsSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxCoinsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CoinInventorySoap">
+    <wsdl:operation name="ListAllCoins">
+      <wsdl:input message="tns:ListAllCoinsSoapIn" />
+      <wsdl:output message="tns:ListAllCoinsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCoinsPrice">
+      <wsdl:input message="tns:AddCoinsPriceSoapIn" />
+      <wsdl:output message="tns:AddCoinsPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCoinsPrice">
+      <wsdl:input message="tns:DeleteCoinsPriceSoapIn" />
+      <wsdl:output message="tns:DeleteCoinsPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoinsPrice">
+      <wsdl:input message="tns:UpdateCoinsPriceSoapIn" />
+      <wsdl:output message="tns:UpdateCoinsPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMinCoinsCost">
+      <wsdl:input message="tns:CalMinCoinsCostSoapIn" />
+      <wsdl:output message="tns:CalMinCoinsCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxCoinsCost">
+      <wsdl:input message="tns:CalMaxCoinsCostSoapIn" />
+      <wsdl:output message="tns:CalMaxCoinsCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <wsdl:input message="tns:CheckInventorySoapIn" />
+      <wsdl:output message="tns:CheckInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinCoins">
+      <wsdl:input message="tns:HowMuchMinCoinsSoapIn" />
+      <wsdl:output message="tns:HowMuchMinCoinsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxCoins">
+      <wsdl:input message="tns:HowMuchMaxCoinsSoapIn" />
+      <wsdl:output message="tns:HowMuchMaxCoinsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CoinInventorySoap" type="tns:CoinInventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllCoins">
+      <soap:operation soapAction="http://tempuri.org/ListAllCoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoinsPrice">
+      <soap:operation soapAction="http://tempuri.org/AddCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCoinsPrice">
+      <soap:operation soapAction="http://tempuri.org/DeleteCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoinsPrice">
+      <soap:operation soapAction="http://tempuri.org/UpdateCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinCoinsCost">
+      <soap:operation soapAction="http://tempuri.org/CalMinCoinsCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxCoinsCost">
+      <soap:operation soapAction="http://tempuri.org/CalMaxCoinsCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap:operation soapAction="http://tempuri.org/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinCoins">
+      <soap:operation soapAction="http://tempuri.org/HowMuchMinCoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxCoins">
+      <soap:operation soapAction="http://tempuri.org/HowMuchMaxCoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CoinInventorySoap12" type="tns:CoinInventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllCoins">
+      <soap12:operation soapAction="http://tempuri.org/ListAllCoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCoinsPrice">
+      <soap12:operation soapAction="http://tempuri.org/AddCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCoinsPrice">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCoinsPrice">
+      <soap12:operation soapAction="http://tempuri.org/UpdateCoinsPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinCoinsCost">
+      <soap12:operation soapAction="http://tempuri.org/CalMinCoinsCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxCoinsCost">
+      <soap12:operation soapAction="http://tempuri.org/CalMaxCoinsCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap12:operation soapAction="http://tempuri.org/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinCoins">
+      <soap12:operation soapAction="http://tempuri.org/HowMuchMinCoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxCoins">
+      <soap12:operation soapAction="http://tempuri.org/HowMuchMaxCoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CoinInventory">
+    <wsdl:port name="CoinInventorySoap" binding="tns:CoinInventorySoap">
+      <soap:address location="https://localhost:44316/CoinInventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CoinInventorySoap12" binding="tns:CoinInventorySoap12">
+      <soap12:address location="https://localhost:44316/CoinInventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

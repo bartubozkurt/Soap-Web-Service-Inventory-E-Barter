@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="https://localhost:44330/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="https://localhost:44330/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://localhost:44330/">
+      <s:element name="ListAllInstruments">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllInstrumentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllInstrumentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddInstrumentResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInstrumentPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteInstrumentPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteInstrumentPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstrumentPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="instrumentMinPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="instrumentMaxPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateInstrumentPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateInstrumentPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinInstrumentCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="instrumentQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinInstrumentCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMinInstrumentCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxInstrumentCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="instrumentQuantity" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxInstrumentCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMaxInstrumentCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMinInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="instrumentName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMaxInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListAllInstrumentsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllInstruments" />
+  </wsdl:message>
+  <wsdl:message name="ListAllInstrumentsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllInstrumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInstrument" />
+  </wsdl:message>
+  <wsdl:message name="AddInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstrumentPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteInstrumentPrice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteInstrumentPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteInstrumentPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstrumentPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateInstrumentPrice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateInstrumentPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateInstrumentPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMinInstrumentCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMinInstrumentCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMinInstrumentCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMinInstrumentCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxInstrumentCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMaxInstrumentCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxInstrumentCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMaxInstrumentCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInventory" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MusicInventorySoap">
+    <wsdl:operation name="ListAllInstruments">
+      <wsdl:input message="tns:ListAllInstrumentsSoapIn" />
+      <wsdl:output message="tns:ListAllInstrumentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInstrument">
+      <wsdl:input message="tns:AddInstrumentSoapIn" />
+      <wsdl:output message="tns:AddInstrumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstrumentPrice">
+      <wsdl:input message="tns:DeleteInstrumentPriceSoapIn" />
+      <wsdl:output message="tns:DeleteInstrumentPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstrumentPrice">
+      <wsdl:input message="tns:UpdateInstrumentPriceSoapIn" />
+      <wsdl:output message="tns:UpdateInstrumentPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMinInstrumentCost">
+      <wsdl:input message="tns:CalMinInstrumentCostSoapIn" />
+      <wsdl:output message="tns:CalMinInstrumentCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxInstrumentCost">
+      <wsdl:input message="tns:CalMaxInstrumentCostSoapIn" />
+      <wsdl:output message="tns:CalMaxInstrumentCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <wsdl:input message="tns:CheckInventorySoapIn" />
+      <wsdl:output message="tns:CheckInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <wsdl:input message="tns:HowMuchMinInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMinInstrumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <wsdl:input message="tns:HowMuchMaxInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMaxInstrumentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MusicInventorySoap" type="tns:MusicInventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllInstruments">
+      <soap:operation soapAction="https://localhost:44330/ListAllInstruments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInstrument">
+      <soap:operation soapAction="https://localhost:44330/AddInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstrumentPrice">
+      <soap:operation soapAction="https://localhost:44330/DeleteInstrumentPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstrumentPrice">
+      <soap:operation soapAction="https://localhost:44330/UpdateInstrumentPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinInstrumentCost">
+      <soap:operation soapAction="https://localhost:44330/CalMinInstrumentCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxInstrumentCost">
+      <soap:operation soapAction="https://localhost:44330/CalMaxInstrumentCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap:operation soapAction="https://localhost:44330/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap:operation soapAction="https://localhost:44330/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap:operation soapAction="https://localhost:44330/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MusicInventorySoap12" type="tns:MusicInventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllInstruments">
+      <soap12:operation soapAction="https://localhost:44330/ListAllInstruments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInstrument">
+      <soap12:operation soapAction="https://localhost:44330/AddInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteInstrumentPrice">
+      <soap12:operation soapAction="https://localhost:44330/DeleteInstrumentPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateInstrumentPrice">
+      <soap12:operation soapAction="https://localhost:44330/UpdateInstrumentPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinInstrumentCost">
+      <soap12:operation soapAction="https://localhost:44330/CalMinInstrumentCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxInstrumentCost">
+      <soap12:operation soapAction="https://localhost:44330/CalMaxInstrumentCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap12:operation soapAction="https://localhost:44330/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap12:operation soapAction="https://localhost:44330/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap12:operation soapAction="https://localhost:44330/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MusicInventory">
+    <wsdl:port name="MusicInventorySoap" binding="tns:MusicInventorySoap">
+      <soap:address location="https://localhost:44330/MusicInventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MusicInventorySoap12" binding="tns:MusicInventorySoap12">
+      <soap12:address location="https://localhost:44330/MusicInventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

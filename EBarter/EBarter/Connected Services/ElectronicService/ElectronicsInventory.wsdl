@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://localhost/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://localhost/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/">
+      <s:element name="ListAllElectronics">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListAllElectronicsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListAllElectronicsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddElectronicPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="minElectronicPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxElectronicPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddElectronicPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddElectronicPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteElectronicPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteElectronicPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteElectronicPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateElectronicPrice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="EMinPrice" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="EMaxPrice" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateElectronicPriceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateElectronicPriceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinElectronicCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="electronicQnty" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMinElectronicCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMinElectronicCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxElectronicCost">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="electronicName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="electronicQnty" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalMaxElectronicCostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CalMaxElectronicCostResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="elecName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMinInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMinInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrument">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="elecName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalBudget" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HowMuchMaxInstrumentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HowMuchMaxInstrumentResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListAllElectronicsSoapIn">
+    <wsdl:part name="parameters" element="tns:ListAllElectronics" />
+  </wsdl:message>
+  <wsdl:message name="ListAllElectronicsSoapOut">
+    <wsdl:part name="parameters" element="tns:ListAllElectronicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddElectronicPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:AddElectronicPrice" />
+  </wsdl:message>
+  <wsdl:message name="AddElectronicPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:AddElectronicPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteElectronicPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteElectronicPrice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteElectronicPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteElectronicPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateElectronicPriceSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateElectronicPrice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateElectronicPriceSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateElectronicPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckInventory" />
+  </wsdl:message>
+  <wsdl:message name="CheckInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMinElectronicCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMinElectronicCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMinElectronicCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMinElectronicCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxElectronicCostSoapIn">
+    <wsdl:part name="parameters" element="tns:CalMaxElectronicCost" />
+  </wsdl:message>
+  <wsdl:message name="CalMaxElectronicCostSoapOut">
+    <wsdl:part name="parameters" element="tns:CalMaxElectronicCostResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMinInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMinInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapIn">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrument" />
+  </wsdl:message>
+  <wsdl:message name="HowMuchMaxInstrumentSoapOut">
+    <wsdl:part name="parameters" element="tns:HowMuchMaxInstrumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ElectronicsInventorySoap">
+    <wsdl:operation name="ListAllElectronics">
+      <wsdl:input message="tns:ListAllElectronicsSoapIn" />
+      <wsdl:output message="tns:ListAllElectronicsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddElectronicPrice">
+      <wsdl:input message="tns:AddElectronicPriceSoapIn" />
+      <wsdl:output message="tns:AddElectronicPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectronicPrice">
+      <wsdl:input message="tns:DeleteElectronicPriceSoapIn" />
+      <wsdl:output message="tns:DeleteElectronicPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateElectronicPrice">
+      <wsdl:input message="tns:UpdateElectronicPriceSoapIn" />
+      <wsdl:output message="tns:UpdateElectronicPriceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <wsdl:input message="tns:CheckInventorySoapIn" />
+      <wsdl:output message="tns:CheckInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMinElectronicCost">
+      <wsdl:input message="tns:CalMinElectronicCostSoapIn" />
+      <wsdl:output message="tns:CalMinElectronicCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxElectronicCost">
+      <wsdl:input message="tns:CalMaxElectronicCostSoapIn" />
+      <wsdl:output message="tns:CalMaxElectronicCostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <wsdl:input message="tns:HowMuchMinInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMinInstrumentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <wsdl:input message="tns:HowMuchMaxInstrumentSoapIn" />
+      <wsdl:output message="tns:HowMuchMaxInstrumentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ElectronicsInventorySoap" type="tns:ElectronicsInventorySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllElectronics">
+      <soap:operation soapAction="http://localhost/ListAllElectronics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddElectronicPrice">
+      <soap:operation soapAction="http://localhost/AddElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectronicPrice">
+      <soap:operation soapAction="http://localhost/DeleteElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateElectronicPrice">
+      <soap:operation soapAction="http://localhost/UpdateElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap:operation soapAction="http://localhost/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinElectronicCost">
+      <soap:operation soapAction="http://localhost/CalMinElectronicCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxElectronicCost">
+      <soap:operation soapAction="http://localhost/CalMaxElectronicCost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap:operation soapAction="http://localhost/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap:operation soapAction="http://localhost/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ElectronicsInventorySoap12" type="tns:ElectronicsInventorySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListAllElectronics">
+      <soap12:operation soapAction="http://localhost/ListAllElectronics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddElectronicPrice">
+      <soap12:operation soapAction="http://localhost/AddElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectronicPrice">
+      <soap12:operation soapAction="http://localhost/DeleteElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateElectronicPrice">
+      <soap12:operation soapAction="http://localhost/UpdateElectronicPrice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckInventory">
+      <soap12:operation soapAction="http://localhost/CheckInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMinElectronicCost">
+      <soap12:operation soapAction="http://localhost/CalMinElectronicCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalMaxElectronicCost">
+      <soap12:operation soapAction="http://localhost/CalMaxElectronicCost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMinInstrument">
+      <soap12:operation soapAction="http://localhost/HowMuchMinInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HowMuchMaxInstrument">
+      <soap12:operation soapAction="http://localhost/HowMuchMaxInstrument" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ElectronicsInventory">
+    <wsdl:port name="ElectronicsInventorySoap" binding="tns:ElectronicsInventorySoap">
+      <soap:address location="https://localhost:44392/ElectronicsInventory.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ElectronicsInventorySoap12" binding="tns:ElectronicsInventorySoap12">
+      <soap12:address location="https://localhost:44392/ElectronicsInventory.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
